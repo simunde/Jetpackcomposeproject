@@ -11,7 +11,10 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
@@ -30,7 +33,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             //SayHello("Siddhesh")
-            DisplayButton()
+            //DisplayButton()
+            DisplaySomething()
         }
     }
 }
@@ -52,7 +56,8 @@ class MainActivity : ComponentActivity() {
     fun PreviewFunction(){
         //SayHello("Siddhesh")
         //DisplayImage()
-        DisplayButton()
+        //DisplayButton()
+        DisplaySomething()
     }
 
     @Composable
@@ -82,4 +87,19 @@ class MainActivity : ComponentActivity() {
                 contentDescription = "Dummy"
             )
         }
+
 }
+
+    @Composable
+    fun DisplaySomething(){
+        val state = remember {mutableStateOf("")}
+        TextField(
+            value = state.value,
+            onValueChange = {
+                state.value = it
+            },
+            label = { Text(text = "Type Something") },
+            placeholder = {}
+
+        )
+    }
