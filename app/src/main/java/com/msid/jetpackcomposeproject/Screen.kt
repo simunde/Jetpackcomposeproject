@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
@@ -24,11 +26,12 @@ import androidx.compose.ui.unit.sp
 @Composable
 @Preview
 fun PreviewItem(){
-    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-        getCategoryList().map { item->
+    LazyColumn(content = {
+        items(getCategoryList()){
+            item ->
             BlogCategory(item.img, item.name, item.prof)
         }
-    }
+    })
 }
 @Composable
 fun BlogCategory(img: Int, name: String, prof: String){
