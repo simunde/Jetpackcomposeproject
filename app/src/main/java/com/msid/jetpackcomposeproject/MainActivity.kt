@@ -5,6 +5,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -15,6 +18,7 @@ import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
@@ -26,6 +30,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import com.msid.jetpackcomposeproject.ui.theme.JetpackcomposeprojectTheme
+import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +62,10 @@ class MainActivity : ComponentActivity() {
         //SayHello("Siddhesh")
         //DisplayImage()
         //DisplayButton()
-        DisplaySomething()
+        //DisplaySomething()
+        //DisplayColumnLayout()
+        //DisplayRowLayout()
+        DisplayBoxLayout()
     }
 
     @Composable
@@ -103,3 +111,39 @@ class MainActivity : ComponentActivity() {
 
         )
     }
+
+@Composable
+fun DisplayColumnLayout() {
+    Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = "A", fontSize = 24.sp)
+
+        Text(text = "B", fontSize = 24.sp)
+    }
+}
+
+@Composable
+fun DisplayRowLayout(){
+    Row(
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text("C", fontSize = 24.sp)
+        Text("D", fontSize = 24.sp)
+    }
+}
+
+@Composable
+fun DisplayBoxLayout(){
+    Image(
+        painter = painterResource(R.drawable.ic_launcher_foreground),
+        contentDescription = "Dummy"
+    )
+    Image(
+        painter = painterResource(R.drawable.ic_launcher_background),
+        contentDescription = "Dummy"
+    )
+
+}
