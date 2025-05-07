@@ -8,8 +8,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
@@ -24,10 +27,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.msid.jetpackcomposeproject.ui.theme.JetpackcomposeprojectTheme
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
@@ -39,7 +44,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             //SayHello("Siddhesh")
             //DisplayButton()
-            DisplaySomething()
+            //DisplaySomething()
+            DisplayCard(R.drawable.ic_launcher_foreground, "John Doe", "Softwre=")
         }
     }
 }
@@ -65,7 +71,16 @@ class MainActivity : ComponentActivity() {
         //DisplaySomething()
         //DisplayColumnLayout()
         //DisplayRowLayout()
-        DisplayBoxLayout()
+        //DisplayBoxLayout()
+        Column {
+            DisplayCard(R.drawable.ic_launcher_foreground, "John Doe", "Software Developer")
+            DisplayCard(R.drawable.ic_launcher_foreground, "Dough Zone", "Software Developer")
+            DisplayCard(R.drawable.ic_launcher_foreground, "Sid Munk", "Software Developer")
+            DisplayCard(R.drawable.ic_launcher_foreground, "John Doe", "Software Developer")
+            DisplayCard(R.drawable.ic_launcher_foreground, "Virat kohli", "Software Developer")
+            DisplayCard(R.drawable.ic_launcher_foreground, "Rohit Sharma", "Software Developer")
+
+        }
     }
 
     @Composable
@@ -146,4 +161,33 @@ fun DisplayBoxLayout(){
         contentDescription = "Dummy"
     )
 
+}
+
+@Composable
+fun DisplayCard(imageID: Int, name:String, occupation: String){
+    //val name = remember { mutableStateOf("") }
+    //val profession = remember { mutableStateOf("") }
+    Row {
+        Image(
+            painter = painterResource(R.drawable.ic_launcher_foreground),
+            contentDescription = "Guy",
+            Modifier.size(40.dp)
+        )
+
+
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+
+            Text(
+                text = name,
+                fontWeight = FontWeight.Bold)
+
+            Text(
+                text = occupation,
+                fontWeight = FontWeight.Thin,
+                fontSize = 12.sp)
+        }
+    }
 }
